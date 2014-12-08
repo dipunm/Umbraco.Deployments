@@ -1,0 +1,8 @@
+﻿Draw diagram explaining versioning tree (showing that v4 and v6 were worked on together)
+
+
+Identify breaking schemas using migration classes in Umbraco.
+Allow command to dictate valid version milestones.
+Modify tests to repeat with different setup dbs (attribute based?).
+
+Tests should still be other way around?

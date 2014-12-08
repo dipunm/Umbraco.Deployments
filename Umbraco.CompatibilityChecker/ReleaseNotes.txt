@@ -1,0 +1,78 @@
+﻿NOT APPLICABLE
+c704dd35f233fe7a79d509137f471492f4847af5 refs/tags/Release-4.5.2
+
+#4.6.0 BEGIN
+
+===============================================
+#4.8.0: CustomSections control removed from DB.
+===============================================
+-- removed all pre-filled data re: umbracoApp, umbracoAppTree, and removed constraints between umbracoApp, umbracoAppTree and umbracoUser2app
+-- changed value of cmsContentType.icon for 'File' to mediaFile.gif
+
+
+#4.9.0
+-- umbracoembed added to RTE (not breaking change)
+
+
+#4.10.0
+-- Thumbnails updated for mediaTypes.
+
+===============================================
+#6.0.0: 
+Refactor of Tabs in DB, 
+Changed the way parent document types are stored
+Adds Abstract types, 
+Adds allowAtRoot, 
+Adds compositions (API only), 
+Fully removed umbracoAppTree table
+===============================================
+-- tabId renamed to propertyTypeGroupId
+-- cmsPropertyGroup can have a parent group 
+-- isContainer, allowAtRoot columns added.
+-- order column added to cmsAllowedContentType table.
+-- Created new cmsContentType link table (contenttype can parent many others and can child many others too.)
+-- Used umbracoNode table and its parentID column to control doctype heirarchy instead of masterContentType
+-- Also added same record to cmsContentType link table
+-- Removed masterContentType column from cmsContentType
+-- cmsTab renamed to cmsPropertyTypeGroup 
+-- LanguageLocale added to cmsContentVersion table.
+(... FIND OUT WHY!)
+-- umbracoAppTree table deleted
+
+#6.0.1
+-- Datafix: some tabs (property groups) were not referencing the same contentTypeNodeId as the properties that it contained.
+
+#6.1.0
+-- Added Server Registry table
+
+===============================================
+#6.2.0: Member refactor
+===============================================
+-- Add MySql primary keys
+-- Add sql indexes
+-- Increase password column from 125 to 500
+-- Adds permissions for changing document types of nodes
+-- Renames propertyType aliases of propertytypes for member to new set of aliases
+
+#7.0.0
+-- Adds more keys and indexes
+-- Adds propertyeditoralias column to datatype table
+-- Applies new aliases from list of known controlId to alias maps.
+-- Unmatchable propertyeditors are mapped to label (readonly)
+-- Removes ControlId (no longer needed.)
+-- Removes userDefaultPermissions(??)
+-- Removes live editing feature
+-- Adds an index to Macro table (search by alias faster)
+-- Adds index to help searching for Macro properties
+-- Cannot hide macro - removed property that hides macro (?)
+-- Replaces MacroPropertyType table with new EditorAlias column
+-- Alters TagRelations table
+-- Optimises Tag table
+-- changes RelatedLinks properties in content from xml to json.
+
+#7.1.0
+-- Adds primary key to cmsTagRelationship table for mySql
+
+#7.2.0
+-- Alters prevalue table so value is type Text.
+-- Adds more foreign keys and indexes.

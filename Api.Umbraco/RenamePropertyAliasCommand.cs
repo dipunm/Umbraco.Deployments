@@ -1,12 +1,5 @@
-﻿using System;
-using System.Web;
-using System.Web.Caching;
-using CmsController.Core;
-using umbraco;
-using umbraco.BusinessLogic;
-using umbraco.cms.businesslogic.propertytype;
+﻿using CmsController.Core;
 using umbraco.cms.businesslogic.web;
-using Umbraco.Web;
 
 namespace Api.Umbraco
 {
