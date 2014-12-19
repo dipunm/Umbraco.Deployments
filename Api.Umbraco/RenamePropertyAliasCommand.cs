@@ -1,4 +1,5 @@
-﻿using CmsController.Core;
+﻿using System;
+using CmsController.Core;
 using umbraco.cms.businesslogic.web;
 
 namespace Api.Umbraco
@@ -13,6 +14,13 @@ namespace Api.Umbraco
             var documentType = DocumentType.GetByAlias(documentTypeAlias);
             var propertyDef = documentType.PropertyTypes.Find(p => p.Alias == oldPropertyAlias);
             propertyDef.Alias = newPropertyAlias;
+        }
+
+        public string Alias { get { return String.Empty; }}
+        public string Description { get { return String.Empty; } }
+        public void Execute(IMessenger console)
+        {
+            throw new NotImplementedException();
         }
     }
 }

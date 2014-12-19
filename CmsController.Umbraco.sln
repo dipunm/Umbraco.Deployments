@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api.Umbraco.Tests", "Api.Um
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Umbraco.CompatibilityChecker", "Umbraco.CompatibilityChecker\Umbraco.CompatibilityChecker.csproj", "{687CA724-3651-437B-BF3E-5F175697DA84}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UmbracoDeployConsole", "UmbracoDeployConsole\UmbracoDeployConsole.csproj", "{21D78F86-1C88-4AD9-88BA-7513EC214ECA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UmbracoDeployConsole.Tests", "UmbracoDeployConsole.Tests\UmbracoDeployConsole.Tests.csproj", "{14A6599F-2A00-45F9-9345-DCC577427B0B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{687CA724-3651-437B-BF3E-5F175697DA84}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{687CA724-3651-437B-BF3E-5F175697DA84}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{687CA724-3651-437B-BF3E-5F175697DA84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21D78F86-1C88-4AD9-88BA-7513EC214ECA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21D78F86-1C88-4AD9-88BA-7513EC214ECA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21D78F86-1C88-4AD9-88BA-7513EC214ECA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21D78F86-1C88-4AD9-88BA-7513EC214ECA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14A6599F-2A00-45F9-9345-DCC577427B0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14A6599F-2A00-45F9-9345-DCC577427B0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14A6599F-2A00-45F9-9345-DCC577427B0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14A6599F-2A00-45F9-9345-DCC577427B0B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
