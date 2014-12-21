@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using CmsController.Core;
@@ -54,7 +55,7 @@ namespace UmbracoDeployConsole.Tests
 
             Assert.That(mockConsole.OutputLines.Single(), Is.StringContaining(uniqueAlias));
         }
-        
+
         [Test]
         public void ListCommands_CommandsFound_EachLineContainsCommandDescription()
         {
@@ -107,6 +108,26 @@ namespace UmbracoDeployConsole.Tests
             controller.ExecuteCommand(commandAlias);
 
             Mock.Get(mockCommand).Verify(c => c.Execute(console), Times.Once);
+        }
+
+        [Test]
+        public void ExecuteCommand_CannotFindCommand_PrintsErrorMessage()
+        {
+            const string commandAlias = "commandAlias";
+            var console = new MockConsole();
+            var commands = new List<ICommand>();
+            var controller = new Controller(console, commands);
+
+            controller.ExecuteCommand(commandAlias);
+
+            var expectedMessage = String.Format("Unable to find command `{0}`", commandAlias);
+            Assert.That(console.OutputLines.Single(), Is.EqualTo(expectedMessage));
+        }
+
+        [Test]
+        public void ExecuteCommand_ArgumentsProvided_CommandRecievesArguments()
+        {
+            Assert.Inconclusive("Not yet created.");
         }
     }
 }

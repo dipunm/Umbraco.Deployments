@@ -33,8 +33,16 @@ namespace UmbracoDeployConsole
 
         public void ExecuteCommand(string commandAlias)
         {
-            var command = _commands.Single(c => c.Alias == commandAlias);
-            command.Execute(_console);
+            if (_commands.Any(c => c.Alias == commandAlias))
+            {
+                var command = _commands.Single(c => c.Alias == commandAlias);
+                command.Execute(_console);
+            }
+            else
+            {
+                var message = String.Format("Unable to find command `{0}`", commandAlias);
+                _console.WriteLine(message);
+            }
         }
     }
 }
