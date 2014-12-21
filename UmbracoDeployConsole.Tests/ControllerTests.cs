@@ -14,12 +14,12 @@ namespace UmbracoDeployConsole.Tests
         [Test]
         public void ListCommands_MultipleCommands_OneLinePrintedPerCommand()
         {
-            var mockConsole = new MockConsole();
+            var mockConsole = new MockMessenger();
             var commands = new List<ICommand>()
             {
-                new MockCommand("commanda", "This is the description of the command 1"),
-                new MockCommand("commandb", "This is the description of the command 2"),
-                new MockCommand("commandc", "This is the description of the command 3")
+                MockCommand.Create("commanda", "This is the description of the command 1"),
+                MockCommand.Create("commandb", "This is the description of the command 2"),
+                MockCommand.Create("commandc", "This is the description of the command 3")
             };
             var controller = new Controller(mockConsole, commands);
 
@@ -31,7 +31,7 @@ namespace UmbracoDeployConsole.Tests
         [Test]
         public void ListCommands_NoCommands_ErrorMessagePrinted()
         {
-            var mockConsole = new MockConsole();
+            var mockConsole = new MockMessenger();
             var commands = new List<ICommand>();
             var controller = new Controller(mockConsole, commands);
 
@@ -43,11 +43,11 @@ namespace UmbracoDeployConsole.Tests
         [Test]
         public void ListCommands_CommandsFound_EachLineContainsCommandAlias()
         {
-            var mockConsole = new MockConsole();
+            var mockConsole = new MockMessenger();
             const string uniqueAlias = "UniqueAlias";
             var commands = new List<ICommand>()
             {
-                new MockCommand(uniqueAlias, "Unique Description")
+                MockCommand.Create(uniqueAlias, "Unique Description")
             };
             var controller = new Controller(mockConsole, commands);
 
@@ -59,11 +59,11 @@ namespace UmbracoDeployConsole.Tests
         [Test]
         public void ListCommands_CommandsFound_EachLineContainsCommandDescription()
         {
-            var mockConsole = new MockConsole();
+            var mockConsole = new MockMessenger();
             const string uniqueDescription = "Unique Description";
             var commands = new List<ICommand>()
             {
-                new MockCommand("UniqueAlias", uniqueDescription)
+                MockCommand.Create("UniqueAlias", uniqueDescription)
             };
             var controller = new Controller(mockConsole, commands);
 
@@ -76,7 +76,7 @@ namespace UmbracoDeployConsole.Tests
         public void ExecuteCommand_OnlyCommandAliasProvided_ExecutesAppropriateCommand()
         {
             const string commandAlias = "commandAlias";
-            var console = new MockConsole();
+            var console = new MockMessenger();
             var mockCommand = MockCommand.Create(commandAlias, null);
             var commands = new List<ICommand>()
             {
@@ -86,14 +86,14 @@ namespace UmbracoDeployConsole.Tests
 
             controller.ExecuteCommand(commandAlias);
 
-            Mock.Get(mockCommand).Verify(c => c.Execute(console), Times.Once);
+            Mock.Get(mockCommand).Verify(c => c.Execute(null), Times.Once);
         }
 
         [Test]
         public void ExecuteCommand_CommandInMiddleOfMultiList_ExecutesAppropriateCommand()
         {
             const string commandAlias = "commandAlias";
-            var console = new MockConsole();
+            var console = new MockMessenger();
             var mockCommand = MockCommand.Create(commandAlias, null);
             var commands = new List<ICommand>()
             {
@@ -107,14 +107,14 @@ namespace UmbracoDeployConsole.Tests
 
             controller.ExecuteCommand(commandAlias);
 
-            Mock.Get(mockCommand).Verify(c => c.Execute(console), Times.Once);
+            Mock.Get(mockCommand).Verify(c => c.Execute(null), Times.Once);
         }
 
         [Test]
         public void ExecuteCommand_CannotFindCommand_PrintsErrorMessage()
         {
             const string commandAlias = "commandAlias";
-            var console = new MockConsole();
+            var console = new MockMessenger();
             var commands = new List<ICommand>();
             var controller = new Controller(console, commands);
 
@@ -127,7 +127,19 @@ namespace UmbracoDeployConsole.Tests
         [Test]
         public void ExecuteCommand_ArgumentsProvided_CommandRecievesArguments()
         {
-            Assert.Inconclusive("Not yet created.");
+            const string commandAlias = "commandAlias";
+            var args = new[] { "/one", "-two", "three=23", "4" };
+            var console = new MockMessenger();
+            var mockCommand = MockCommand.Create(commandAlias, null);
+            var commands = new List<ICommand>()
+            {
+                mockCommand
+            };
+            var controller = new Controller(console, commands);
+
+            controller.ExecuteCommand(commandAlias, args);            
+
+            Mock.Get(mockCommand).Verify(c => c.Execute(args), Times.Once);
         }
     }
 }

@@ -2,11 +2,11 @@ using System.Collections.Generic;
 
 namespace UmbracoDeployConsole.Tests
 {
-    public class MockConsole : IConsole
+    public class MockMessenger : IMessenger
     {
         private readonly List<string> _outputLines;
 
-        public MockConsole()
+        public MockMessenger()
         {
             _outputLines = new List<string>();
         }

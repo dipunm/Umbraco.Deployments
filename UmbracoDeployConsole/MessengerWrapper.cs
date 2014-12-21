@@ -5,7 +5,7 @@ using System.Text;
 
 namespace UmbracoDeployConsole
 {
-    class ConsoleWrapper : IConsole
+    class MessengerWrapper : IMessenger
     {
         public void WriteLine(string message)
         {

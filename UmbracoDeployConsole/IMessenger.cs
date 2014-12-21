@@ -6,7 +6,7 @@ using CmsController.Core;
 
 namespace UmbracoDeployConsole
 {
-    public interface IConsole : IMessenger
+    public interface IMessenger
     {
         void WriteLine(string message);
     }

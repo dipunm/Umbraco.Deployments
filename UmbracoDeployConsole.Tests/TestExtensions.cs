@@ -25,7 +25,7 @@ namespace UmbracoDeployConsole.Tests
     }
 
 
-    public class MockCommand : ICommand
+    public class MockCommand
     {
         public static ICommand Create(string name, string description)
         {
@@ -34,18 +34,9 @@ namespace UmbracoDeployConsole.Tests
             mock.SetupGet(c => c.Description).Returns(description);
             return mock.Object;
         }
-
-        public MockCommand(string name, string description)
+        public IDisposable Subscribe(IObserver<int> observer)
         {
-            Alias = name;
-            Description = description;
-        }
-
-        public string Alias { get; private set; }
-        public string Description { get; private set; }
-        public void Execute(IMessenger console)
-        {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
     }
 }

@@ -50,7 +50,7 @@ namespace UmbracoDeployConsole
         {
             var commands = new List<ICommand>()
             {
-                new COMMAND()
+                new Command()
             };
 
             var method = args[0].Trim();
@@ -96,16 +96,16 @@ namespace UmbracoDeployConsole
         Continue, Exit
     }
 
-    internal class COMMAND : ICommand
+    internal class Command : ICommand
     {
-        public COMMAND()
+        public Command()
         {
             Alias = "hello";
             Description = "Kills all humans";
         }
         public string Alias { get; private set; }
         public string Description { get; private set; }
-        public void Execute(IMessenger console)
+        public void Execute(string[] args = null)
         {
             throw new NotImplementedException();
         }

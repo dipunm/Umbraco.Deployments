@@ -18,7 +18,7 @@ namespace Api.Umbraco
 
         public string Alias { get { return String.Empty; }}
         public string Description { get { return String.Empty; } }
-        public void Execute(IMessenger console)
+        public void Execute(string[] args = null)
         {
             throw new NotImplementedException();
         }

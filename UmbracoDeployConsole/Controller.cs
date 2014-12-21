@@ -7,10 +7,10 @@ namespace UmbracoDeployConsole
 {
     public class Controller
     {
-        private readonly IConsole _console;
+        private readonly IMessenger _console;
         private readonly IEnumerable<ICommand> _commands;
 
-        public Controller(IConsole console, IEnumerable<ICommand> commands)
+        public Controller(IMessenger console, IEnumerable<ICommand> commands)
         {
             _console = console;
             _commands = commands;
@@ -31,12 +31,13 @@ namespace UmbracoDeployConsole
             }
         }
 
-        public void ExecuteCommand(string commandAlias)
+        public void ExecuteCommand(string commandAlias, string[] args = null)
         {
+
             if (_commands.Any(c => c.Alias == commandAlias))
             {
                 var command = _commands.Single(c => c.Alias == commandAlias);
-                command.Execute(_console);
+                command.Execute(args);
             }
             else
             {

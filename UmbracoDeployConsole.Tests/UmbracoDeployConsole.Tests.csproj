@@ -47,7 +47,7 @@
   <ItemGroup>
     <Compile Include="ControllerTests.cs" />
     <Compile Include="TestExtensions.cs" />
-    <Compile Include="MockConsole.cs" />
+    <Compile Include="MockMessenger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

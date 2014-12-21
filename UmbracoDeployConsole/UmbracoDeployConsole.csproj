@@ -42,9 +42,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConsoleWrapper.cs" />
+    <Compile Include="MessengerWrapper.cs" />
     <Compile Include="Controller.cs" />
-    <Compile Include="IConsole.cs" />
+    <Compile Include="IMessenger.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
